@@ -1,120 +1,212 @@
-<!doctype html>
-<html class="no-js" lang="en">
-
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Administrasi Desa</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/png" href="{{ asset ('/assets/srtdash/assets/images/icon/favicon.ico') }}">
-    <link rel="stylesheet" href="{{ asset ('/assets/srtdash/assets/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset ('/assets/srtdash/assets/css/font-awesome.min.css') }}">
-    <link rel="stylesheet" href="{{ asset ('/assets/srtdash/assets/css/themify-icons.css') }}">
-    <link rel="stylesheet" href="{{ asset ('/assets/srtdash/assets/css/metisMenu.css') }}">
-    <link rel="stylesheet" href="{{ asset ('/assets/srtdash/assets/css/owl.carousel.min.css') }}">
-    <link rel="stylesheet" href="{{ asset ('/assets/srtdash/assets/css/slicknav.min.css') }}">
-    <!-- amchart css -->
-    <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css') }}" type="text/css" media="all" />
-    @yield('css')
-    <!-- others css -->
-    <link rel="stylesheet" href="{{ asset ('/assets/srtdash/assets/css/typography.css') }}">
-    <link rel="stylesheet" href="{{ asset ('/assets/srtdash/assets/css/default-css.css') }}">
-    <link rel="stylesheet" href="{{ asset ('/assets/srtdash/assets/css/styles.css') }}">
-    <link rel="stylesheet" href="{{ asset ('/assets/srtdash/assets/css/responsive.css') }}">
-    <!-- modernizr css -->
-    <script src="{{ asset ('/assets/srtdash/assets/js/vendor/modernizr-2.8.3.min.js') }}"></script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>E-Des | Dashboard</title>
+  @yield('css')  
 </head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
 
-<body>
-    <!-- preloader area end -->
-    <!-- page container area start -->
-    <div class="page-container">
-        <!-- sidebar menu area start -->
-        @include('layouts.sidebar')
-        <!-- sidebar menu area end -->
-        <!-- main content area start -->
-        <div class="main-content">
-            <!-- header area start -->
-            <div class="header-area">
-                <div class="row align-items-center">
-                    <!-- nav and search button -->
-                    <div class="col-md-6 col-sm-8 clearfix">
-                        <div class="nav-btn pull-left">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                        <div class="search-box pull-left">
-                        </div>
-                    </div>
-                    <!-- profile info & task notification -->
-                    <div class="col-md-6 col-sm-4 clearfix">
-                        <ul class="notification-area pull-right">
-                            <li id="full-view"><i class="ti-fullscreen"></i></li>
-                            <li id="full-view-exit"><i class="ti-zoom-out"></i></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <!-- header area end -->
-            <!-- page title area start -->
-            <div class="page-title-area">
-                <div class="row align-items-center">
-                    <div class="col-sm-6">
-                        <div class="breadcrumbs-area clearfix">
-                            <h4 class="page-title pull-left">@yield('title')</h4>
-                            <ul class="breadcrumbs pull-left">
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 clearfix">
-                        <div class="user-profile pull-right">
-                           <!--  -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @yield('content')
-        </div>
-        <!-- main content area end -->
-        <!-- footer area start-->
-        <footer>
-            <div class="footer-area">
-                <p>© Copyright 2018. All right reserved. Template by <a href="https://colorlib.com/wp/">Colorlib</a>.</p>
-            </div>
-        </footer>
-        <!-- footer area end-->
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+      </li>
+    </ul>
+
+    <!-- Right navbar links -->
+    <!--  -->
+  </nav>
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="index3.html" class="brand-link">
+      <span class="brand-text font-weight-light">E-Des</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item has-treeview menu-open">
+            <a href="{{ route('dashboard') }}" class="nav-link active">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Dashboard
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('penduduk-index') }}" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Data Penduduk
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Fromulir Surat
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="pages/layout/top-nav.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Surat Domisili</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Surat Keterangan Miskin</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/layout/collapsed-sidebar.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Surat Ketrangan Kelahiran</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/layout/boxed.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Surat Keterangan Kematian</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/layout/fixed-sidebar.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Surat Pengantar SKCK</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/layout/fixed-topnav.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Surat Keterangan Belum Menikah</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/layout/fixed-footer.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Surat Keterangan Untuk Menikah</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/layout/fixed-footer.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Surat Persetujuan Mempelai</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/layout/fixed-footer.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Surat Izin Orang Tua</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="pages/layout/fixed-footer.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Surat Izin Keramaian</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/layout/fixed-footer.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Surat Keterangan Usaha</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="https://adminlte.io/docs/3.0" class="nav-link">
+              <i class="nav-icon fas fa-file"></i>
+              <p>Data Pengguna</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="https://adminlte.io/docs/3.0" class="nav-link">
+              <i class="nav-icon fas fa-file"></i>
+              <p>Data Penanggung Jawab</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="https://adminlte.io/docs/3.0" class="nav-link">
+              <i class="nav-icon fas fa-file"></i>
+              <p>Keluar</p>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
     </div>
-    <!-- page container area end -->
-    <!-- jquery latest version -->
-    <script src="{{ asset('assets/srtdash/assets/js/vendor/jquery-2.2.4.min.js') }}"></script>
-    <!-- bootstrap 4 js -->
-    <script src="{{ asset('assets/srtdash/assets/js/popper.min.js') }}"></script>
-    <script src="{{ asset('assets/srtdash/assets/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('assets/srtdash/assets/js/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('assets/srtdash/assets/js/metisMenu.min.js') }}"></script>
-    <script src="{{ asset('assets/srtdash/assets/js/jquery.slimscroll.min.js') }}"></script>
-    <script src="{{ asset('assets/srtdash/assets/js/jquery.slicknav.min.js') }}"></script>
+    <!-- /.sidebar -->
+  </aside>
 
-    <!-- start chart js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js') }}"></script>
-    <!-- start highcharts js -->
-    <script src="https://code.highcharts.com/highcharts.js') }}"></script>
-    <!-- start zingchart js -->
-    <script src="https://cdn.zingchart.com/zingchart.min.js') }}"></script>
-    <script>
-    zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
-    ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9", "ee6b7db5b51705a13dc2339db3edaf6d"];
-    </script>
-    <!-- all line chart activation -->
-    <script src="{{ asset('assets/srtdash/assets/js/line-chart.js') }}"></script>
-    <!-- all pie chart -->
-    <script src="{{ asset('assets/srtdash/assets/js/pie-chart.js') }}"></script>
-    <!-- others plugins -->
-    @yield('js')
-    <script src="{{ asset('assets/srtdash/assets/js/plugins.js') }}"></script>
-    <script src="{{ asset('assets/srtdash/assets/js/scripts.js') }}"></script>
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-dark">@yield('title')</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+              <!-- <li class="breadcrumb-item active"></li> -->
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
 
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+         @yield('content')
+        <div class="row">
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
+    All rights reserved.
+    <div class="float-right d-none d-sm-inline-block">
+      <b>Version</b> 3.0.5
+    </div>
+  </footer>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+@yield('js')
 </body>
-
 </html>

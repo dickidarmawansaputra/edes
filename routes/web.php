@@ -13,17 +13,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('layouts.app');
-});
+// Route::get('/', function () {
+//     return view('layouts.apps');
+// });
 
 Auth::routes();
+// Route::get('/login', 'DashboardController@index')->name('dashboard');
+// Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'DashboardController@index')->name('dashboard');
-Route::get('/data-warga', 'WargaController@data')->name('data-warga');
-Route::get('/warga', 'WargaController@index')->name('warga-index');
-Route::post('/warga', 'WargaController@store')->name('warga-store');
-Route::get('/warga/{id}', 'WargaController@edit')->name('warga-edit');
+Route::get('/data-penduduk', 'PendudukController@data')->name('penduduk-data');
+Route::get('/penduduk', 'PendudukController@index')->name('penduduk-index');
+Route::post('/penduduk', 'PendudukController@store')->name('penduduk-store');
+Route::get('/penduduk/{id}', 'PendudukController@edit')->name('penduduk-edit');
 Route::put('/warga', 'WargaController@update')->name('warga-update');
 Route::post('warga/hapus/{id}', 'WargaController@destroy')->name('warga.destroy');

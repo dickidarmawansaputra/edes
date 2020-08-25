@@ -1,230 +1,331 @@
 @extends('layouts.app')
 @section('css')
-	<!-- Start datatable css -->
-    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.jqueryui.min.css">
-
- -->    <!-- style css -->
-        <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{{ asset('adminlte/plugins/fontawesome-free/css/all.min.css') }}">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="{{ asset('adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('adminlte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{{ asset('adminlte/dist/css/adminlte.min.css') }}">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 @endsection
 @section('content')
 	@section('title')
 		Master Data Warga
 	@endsection
-	<!-- page title area end -->
-	<div class="main-content-inner">
-	    
-	    <!-- overview area start -->
-	    <div class="row">
-	    	<div class="col-12 mt-5">
-	            <div class="card">
-	                <div class="card-body">
-	                    <h4 class="header-title">Data Warga</h4>
-	                    <button type="button" class="btn btn-primary mb-3" role="button" data-toggle="modal" data-target=".bd-example-modal-lg">Tambah Data</button>
-	                    <div class="data-tables">
-	                        <table id="dataTable" class="text-center">
-	                            <thead class="bg-light text-capitalize">
-	                                <tr>
-	                                    <th>No.</th>
-	                                    <th>NIK</th>
-	                                    <th>Nama</th>
-	                                    <th>Pekerjaan</th>
-	                                    <th>Aksi</th>
-	                                </tr>
-	                            </thead>
-	                        </table>
-	                    </div>
-	                </div>
-	            </div>
-            </div>    
-	    </div>
-	</div>
-<!-- modal -->
-	<div class="col-lg-6 mt-5">
-        <div class="card">
-            <div class="card-body">
-                <div class="modal fade bd-example-modal-lg">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">Tambah Data Warga</h5>
-                                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
-                            </div>
-                            <div class="modal-body">
-                            	<form action="{{ route('warga-store') }}" method="post">
-                            		@csrf
-                               	<div class="form-group">
-		                            <label for="example-text-input" class="col-form-label">NIK</label>
-		                            <input class="form-control" type="text" value="nik" id="example-text-input" name="nik">
-		                        </div>
-		                        <div class="form-group">
-		                            <label for="example-text-input" class="col-form-label">No KK</label>
-		                            <input class="form-control" type="text" value="Nomor Kartu Keluarga" id="example-text-input" name="no_kk">
-		                        </div>
-		                        <div class="form-group">
-		                            <label for="example-text-input" class="col-form-label">Nama Lengkap</label>
-		                            <input class="form-control" type="text" value="nama sesuai KTP" id="example-text-input" name="nama">
-		                        </div>
-		                        <div class="form-group">
-		                            <label for="example-text-input" class="col-form-label">Tempat Lahir</label>
-		                            <input class="form-control" type="text" value="Tempat Lahir" id="example-text-input" name="tempat_lahir">
-		                        </div>
-		                        <div class="form-group">
-		                            <label for="example-text-input" class="col-form-label">Tanggal Lahir</label>
-		                            <input class="form-control" type="text" value="Tempat Lahir" id="example-text-input" name="tgl_lahir">
-		                        </div>
-		                        <div class="form-group">
-                                    <label for="example-text-input" class="col-form-label">Nomor Telpon</label>
-                                    <input class="form-control" type="text" value="Nomor telpon aktif" id="example-date-input" name="no_hp">
-                                </div>
-		                        <div class="form-group">
-		                            <label for="example-text-input" class="col-form-label">Alamat</label>
-		                            <textarea class="form-control" id="" cols="30" rows="10" name="alamat"></textarea>
-		                        </div>
-                                <div class="form-group">
-                                    <label class="col-form-label">Pekerjaan</label>
-                                    <select class="form-control" name="pekerjaan">
-                                        <option>-- Pilih Pekerjaan --</option>
-                                        <option value="PNS">PNS</option>
-                                        <option value="Wirausaha">Wirasuasta</option>
-                                        <option>Lainnya ...</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-form-label">Agama</label>
-                                    <select class="form-control" name="agama">
-                                        <option>-- Pilih Agama --</option>
-                                        <option value="Islam">Islam</option>
-                                        <option value="Kristen">Kristen</option>
-                                        <option value="katolik">Katolik</option>
-                                        <option value="Budha">Budha</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-form-label">Status Pernikahan</label>
-                                    <select name="status_pernikahan" class="form-control">
-                                        <option>-- Pilih Status --</option>
-                                        <option value="Menikah">Menikah</option>
-                                        <option value="Belum Menikah">Belum Menikah</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-form-label">Warga Negara</label>
-                                    <select name="warga_negara" class="form-control">
-                                        <option>-- Pilih Status --</option>
-                                        <option value="WNI">WNI</option>
-                                        <option value="WNA">WNA</option>
-                                    </select>
-                                </div>
-                                <b class="text-muted mb-3 d-block">Jenis Kelamin</b>
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" checked id="customRadio1" name="j_kel" value="laki-laki" class="custom-control-input">
-                                    <label class="custom-control-label" for="customRadio1">Laki-laki</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" id="customRadio2" name="j_kel" value="perampuan" class="custom-control-input">
-                                    <label class="custom-control-label" for="customRadio2">Perempuan</label>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">tutup</button>
-                                <button type="submit" class="btn btn-primary">Simpan</button>
-                            </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+	
+	<div class="card">
+      <div class="card-header">
+        <!-- <h3 class="card-title">Master Data Penduduk</h3> -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-xl">
+	      Tambah Data
+	    </button>
+      </div>
+              <!-- /.card-header -->
+      <div class="card-body">
+        <table id="dataTable" class="table table-bordered table-striped">
+          <thead>
+          <tr>
+            <th>No</th>
+            <th>NIK</th>
+            <th>Nama</th>
+            <th>Pekerjaan</th>
+            <th>Aksi</th>
+          </tr>
+          </thead>
+          <tbody>
+          </tbody>
+          <tfoot>
+          <tr>
+            <th>No</th>
+            <th>NIK</th>
+            <th>Nama</th>
+            <th>Pekerjaan</th>
+            <th>Aksi</th>
+          </tr>
+          </tfoot>
+        </table>
+      </div>
+              <!-- /.card-body -->
     </div>
-<!-- endmodal -->
+
+    <div class="modal fade" id="modal-xl">
+        <div class="modal-dialog modal-xl">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Tambah Data Penduduk</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form action="{{ route('penduduk-store') }}" method="post">
+              @csrf
+              	 <div class="form-group">
+                    <label for="nik">NIK</label>
+                    <input type="text" class="form-control" name="nik" value="">
+                  </div>
+                  <div class="form-group">
+                    <label for="no_kk">No KK</label>
+                    <input type="text" class="form-control" name="no_kk" placeholder="Nomor Kartu Keluarga">
+                  </div>
+                  <div class="form-group">
+                    <label for="nama">Nama</label>
+                    <input type="text" class="form-control" name="nama" placeholder="Nama">
+                  </div>
+                  <div class="form-group">
+                    <label for="tempat_lahir">Tempat Lahir</label>
+                    <input type="text" class="form-control" name="tempat_lahir" placeholder="Tempat Lahir">
+                  </div>
+                  <div class="form-group">
+                  	<label for="tgl_lahir">Tanggal Lahir</label>
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                    </div>
+                    <input type="text" name="tgl_lahir" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="yyyy/mm/dd" data-mask>
+                  </div>
+ 				  <div class="form-group">
+                    <label for="alamat">Alamat</label><br>
+                    <textarea name="alamat" name="alamat" cols="50" rows="10"></textarea>
+                  </div>
+                  <div class="form-group">
+                  	<label for="jenis_kelamin">Jenis Kelamin</label>
+                  	<div class="form-check">
+                      <input class="form-check-input" type="radio" name="jenis_kelamin" value="Laki-laki">
+                      <label class="form-check-label">Laki-laki</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="jenis_kelamin" value="Perampuan">
+                      <label class="form-check-label">Perempuan</label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="no_hp">Nomor HP</label>
+                    <input type="text" class="form-control" name="no_hp" placeholder="Nomor HP">
+                  </div>
+                  <div class="form-group">
+                  	<label>Pekerjaan</label>
+                    <select name="pekerjaan" class="form-control">
+                      <option>-- Pilih --</option>
+                      <option value="PNS">PNS</option>
+                      <option value="Wirausaha">Wirausaha</option>
+                      <option value="Petani">Petani</option>
+                      <option value="Nelayan">Nelayan</option>
+                      <option value="Lainnya">Lainnya</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                  	<label>Agama</label>
+                    <select name="agama" class="form-control">
+                      <option>-- Pilih --</option>
+                      <option value="Islam">Islam</option>
+                      <option value="Kristen">Kristen</option>
+                      <option value="Katolik">Katolik</option>
+                      <option value="Budha">Budha</option>
+                      <option value="Lainnya">Lainnya</option>
+                    </select>
+                  </div> 
+                  <div class="form-group">
+                  	<label>Status Pernikahan</label>
+                    <select name="status_nikah" class="form-control">
+                      <option>-- Pilih --</option>
+                      <option value="Menikah">Menikah</option>
+                      <option value="Belum Menikah">Belum Menikah</option>
+                      <option value="Lainnya">Lainnya</option>
+                    </select>
+                  </div>                 
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default" data-dismiss="modal">tutup</button>
+              <button type="submit" class="btn btn-primary">Simpan</button>
+            </div>
+              </form>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+
+      <div class="modal fade" id="edit">
+        <div class="modal-dialog modal-xl">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Edit Data Penduduk</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form action="{{ route('penduduk-store') }}" method="post">
+              @csrf
+              @method('PUT')
+              	 <input type="hidden" name="id" id="id" value="">
+              	 <div class="form-group">
+                    <label for="nik">NIK</label>
+                    <input type="text" class="form-control" id="nik" name="nik" placeholder="NIK" value="">
+                  </div>
+                  <div class="form-group">
+                    <label for="no_kk">No KK</label>
+                    <input type="text" class="form-control" id="no_kk" name="no_kk" placeholder="Nomor Kartu Keluarga">
+                  </div>
+                  <div class="form-group">
+                    <label for="nama">Nama</label>
+                    <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama">
+                  </div>
+                  <div class="form-group">
+                    <label for="tempat_lahir">Tempat Lahir</label>
+                    <input type="text" class="form-control" id="tempat_lahir" name="tempat_lahir" placeholder="Tempat Lahir">
+                  </div>
+                  <div class="form-group">
+                  	<label for="tgl_lahir">Tanggal Lahir</label>
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                    </div>
+                    <input type="text" id="tgl_lahir" name="tgl_lahir" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="yyyy/mm/dd" data-mask>
+                  </div>
+ 				  <div class="form-group">
+                    <label for="alamat">Alamat</label><br>
+                    <textarea name="alamat" id="alamat" name="alamat" cols="50" rows="10"></textarea>
+                  </div>
+                  <div class="form-group">
+                  	<label for="jenis_kelamin">Jenis Kelamin</label>
+                  	<div class="form-check">
+                      <input class="form-check-input" type="radio" name="jenis_kelamin" value="Laki-laki">
+                      <label class="form-check-label">Laki-laki</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="jenis_kelamin" value="Perampuan">
+                      <label class="form-check-label">Perempuan</label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="no_hp">Nomor HP</label>
+                    <input type="text" class="form-control" id="no_hp" name="no_hp" placeholder="Nomor HP">
+                  </div>
+                  <div class="form-group">
+                  	<label>Pekerjaan</label>
+                    <select name="pekerjaan" class="form-control">
+                      <option>-- Pilih --</option>
+                      <option value="PNS">PNS</option>
+                      <option value="Wirausaha">Wirausaha</option>
+                      <option value="Petani">Petani</option>
+                      <option value="Nelayan">Nelayan</option>
+                      <option value="Lainnya">Lainnya</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                  	<label>Agama</label>
+                    <select name="agama" class="form-control">
+                      <option>-- Pilih --</option>
+                      <option <?php if ($ == "Islam") { } echo "selected"; ?> value="Islam">Islam</option>
+                      <option value="Kristen">Kristen</option>
+                      <option value="Katolik">Katolik</option>
+                      <option value="Budha">Budha</option>
+                      <option value="Lainnya">Lainnya</option>
+                    </select>
+                  </div> 
+                  <div class="form-group">
+                  	<label>Status Pernikahan</label>
+                    <select name="status_nikah" class="form-control">
+                      <option>-- Pilih --</option>
+                      <option value="Menikah">Menikah</option>
+                      <option value="Belum Menikah">Belum Menikah</option>
+                      <option value="Lainnya">Lainnya</option>
+                    </select>
+                  </div>                 
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default" data-dismiss="modal">tutup</button>
+              <button type="submit" class="btn btn-primary">Simpan</button>
+            </div>
+              </form>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
 
 @section('js')
-	<!-- Start datatable js -->
-		<script src="//code.jquery.com/jquery.js"></script>
-        <!-- DataTables -->
-        <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
-        <!-- Bootstrap JavaScript -->
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-        <!-- App scripts -->
+	<!-- jQuery -->
+<script src="{{ asset('adminlte/plugins/jquery/jquery.min.js') }}"></script>
+<!-- Bootstrap 4 -->
+<script src="{{ asset('adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<!-- DataTables -->
+<script src="{{ asset('adminlte/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('adminlte/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+<script src="{{ asset('adminlte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+<!-- adminlte App -->
+<script src="{{ asset('adminlte/dist/js/adminlte.min.js') }}"></script>
+<!-- adminlte for demo purposes -->
+<script src="{{ asset('adminlte/dist/js/demo.js') }}"></script>
+<!-- page script -->
+ <script>
+	$(function() {
+	    $('#dataTable').DataTable({
+	        processing: true,
+	        serverSide: true,
+	        responsive: true,
+	        ajax: '{!! route('penduduk-data') !!}',
+	        columns: [
+	            {data: 'DT_RowIndex', orderable: false, searchable: false},
+	            { data: 'nik', name: 'nik' },
+	            { data: 'nama', name: 'nama' },
+	            { data: 'pekerjaan', name: 'pekerjaan' },
+	            { data: 'aksi', name: 'aksi', className: 'text-center' }
+	        ]
+	    });
+	});
+</script>
 
-    <script>
-		$(function() {
-		    $('#dataTable').DataTable({
-		        processing: true,
-		        serverSide: true,
-		        ajax: '{!! route('data-warga') !!}',
-		        columns: [
-		            {data: 'DT_RowIndex', orderable: false, searchable: false},
-		            { data: 'nik', name: 'nik' },
-		            { data: 'nama', name: 'nama' },
-		            { data: 'pekerjaan', name: 'pekerjaan' },
-		            { data: 'aksi', name: 'aksi', className: 'text-center' }
-		        ]
-		    });
-		});
-	</script>
-	<script>
+<script>
 	$('#edit').on('show.bs.modal', function(event){
 	    var row = $(event.relatedTarget);
 	    var id = row.data('id');
 	    var nik = row.data('nik');
+	    var nama = row.data('nama');
 	    var no_kk = row.data('no_kk');
 	    var alamat = row.data('alamat');
 	    var tempat_lahir = row.data('tempat_lahir');
 	    var tgl_lahir = row.data('tgl_lahir');
-	    var status_pernikahan = row.data('status_pernikahan');
-	    var j_kel = row.data('j_kel');
+	    var status_nikah= row.data('status_nikah');
+	    var jenis_kelamin = row.data('jenis_kelamin');
 	    var agama = row.data('agama');
 	    var pekerjaan = row.data('pekerjaan');
-	    var warga_negara = row.data('warga_negara');
 	    var no_hp = row.data('no_hp');
 	    $('#id').val(id);
 	    $('#nik').val(nik);
+	    $('#nama').val(nama);
 	    $('#no_kk').val(no_kk);
 	    $('#alamat').val(alamat);
 	    $('#tempat_lahir').val(tempat_lahir);
 	    $('#tgl_lahir').val(tgl_lahir);
-	    $('#status_pernikahan').val(status_pernikahan);
-	    $('#j_kel').val(j_kel);
+	    $('#status_nikah').val(status_nikah);
+	    $('#jenis_kelamin').val(jenis_kelamin);
 	    $('#agama').val(agama);
 	    $('#pekerjaan').val(pekerjaan);
-	    $('#warga_negara').val(warga_negara);
 	    $('#no_hp').val(no_hp);
 	});
-	</script>
-	<script>
-		$(document).on("click", ".hapus", function (e) {
-			var id = $(this).data("id");
-			e.preventDefault();
-			Swal.fire({
-			title: 'Anda yakin?',
-			text: "Data ini akan dihapus!",
-			type: 'warning',
-			showCancelButton: true,
-			confirmButtonColor: '#3085d6',
-			cancelButtonColor: '#d33',
-			confirmButtonText: 'Yes'
-			}).then((result) => {
-			if (result.value) {
-				$.post( "{{url('warga/hapus')}}/"+id, { "_token": "{{ csrf_token() }}" })
-				Swal.fire(
-				'Terhapus!',
-				'Data berhasil dihapus.',
-				'success'
-				)
-				location.reload()
-			} else if (result.dismiss === Swal.DismissReason.cancel) {
-				Swal.fire(
-				'Batal hapus',
-				'Data batal dihapus :)',
-				'error'
-				)
-			}
-			})
-		});
-	</script>
+</script>
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true,
+      "autoWidth": false,
+    });
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
 @endsection
 @endsection
