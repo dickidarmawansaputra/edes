@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>E-Des | Dashboard</title>
+  <title>EDes</title>
   @yield('css')  
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -49,7 +49,7 @@
           </li>
           <li class="nav-item">
             <a href="{{ route('penduduk-index') }}" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+              <i class="nav-icon fas fa-users"></i>
               <p>
                 Data Penduduk
               </p>
@@ -60,10 +60,10 @@
               <i class="nav-icon fas fa-copy"></i>
               <p>
                 Fromulir Surat
-                <i class="fas fa-angle-left right"></i>
+                <!-- <i class="fas fa-angle-left right"></i> -->
               </p>
             </a>
-            <ul class="nav nav-treeview">
+            <!-- <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="pages/layout/top-nav.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -131,23 +131,29 @@
                   <p>Surat Keterangan Usaha</p>
                 </a>
               </li>
-            </ul>
+            </ul> -->
           </li>
           <li class="nav-item">
             <a href="https://adminlte.io/docs/3.0" class="nav-link">
-              <i class="nav-icon fas fa-file"></i>
+              <i class="nav-icon fas fa-user"></i>
               <p>Data Pengguna</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="https://adminlte.io/docs/3.0" class="nav-link">
-              <i class="nav-icon fas fa-file"></i>
+            <a href="{{ route('pj-index') }}" class="nav-link">
+              <i class="nav-icon fas fa-user-tie"></i>
               <p>Data Penanggung Jawab</p>
             </a>
           </li>
           <li class="nav-item">
             <a href="https://adminlte.io/docs/3.0" class="nav-link">
               <i class="nav-icon fas fa-file"></i>
+              <p>Laporan</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="https://adminlte.io/docs/3.0" class="nav-link">
+              <i class="nav-icon fas fa-sign-out-alt"></i>
               <p>Keluar</p>
             </a>
           </li>
