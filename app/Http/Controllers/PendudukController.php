@@ -26,6 +26,19 @@ class PendudukController extends Controller
     	    ->addIndexColumn()
     	    ->rawColumns(['aksi'])
     	    ->make(true);
+
+        return Datatables::of($data)
+            ->addColumn('aksi', function($data) {
+                return '
+                <button type="button" class="btn btn-icon btn-primary btn-sm" data-toggle="modal" data-target="#view" data-id="'.$data->id.'" data-nik="'.$data->nik.'" data-no_kk="'.$data->no_kk.'" data-nama="'.$data->nama.'" data-tempat_lahir="'.$data->tempat_lahir.'" data-tgl_lahir="'.$data->tgl_lahir.'" data-alamat="'.$data->alamat.'" data-jenis_kelamin="'.$data->jenis_kelamin.'" data-pekerjaan="'.$data->pekerjaan.'" data-agama="'.$data->agama.'" data-status_nikah="'.$data->status_nikah.'" data-no_hp="'.$data->no_hp.'" data-tgl_lahir="'.$data->tgl_lahir.'"
+               ><i class="far fa-eye"></i></button>
+               <button type="button" class="btn btn-icon btn-primary btn-sm" data-toggle="modal" data-target="#edit" data-id="'.$data->id.'" data-nik="'.$data->nik.'" data-no_kk="'.$data->no_kk.'" data-nama="'.$data->nama.'" data-tempat_lahir="'.$data->tempat_lahir.'" data-tgl_lahir="'.$data->tgl_lahir.'" data-alamat="'.$data->alamat.'" data-jenis_kelamin="'.$data->jenis_kelamin.'" data-pekerjaan="'.$data->pekerjaan.'" data-agama="'.$data->agama.'" data-status_nikah="'.$data->status_nikah.'" data-no_hp="'.$data->no_hp.'" data-tgl_lahir="'.$data->tgl_lahir.'"
+               ><i class="far fa-edit"></i></button>
+                <button type="button" class="btn btn-icon btn-danger btn-sm hapus" data-id="'.$data->id.'"><i class="fas fa-trash"></i></button>';
+            })
+            ->rawColumns(['aksi'])
+            ->addIndexColumn()
+            ->make(true);
     }
 
     public function store(Request $request)
@@ -41,7 +54,21 @@ class PendudukController extends Controller
     	$data = $request->all();
     	Penduduk::find($request->id)->update($data);
     	toast('Data tersimpan!','success');
-    	return redirect()->back();
+        return redirect()->route('Penduduk-index');
+    }
+
+    // public function edit($id)
+    // {
+    //     $data = Warga::find($id);
+    //     return view('warga.update', compact('data'));
+    // }
+
+    public function update(Request $request)
+    {
+        $data = $request->all();
+        Penduduk::find($request->id)->update($data);
+        // toast('Data berhasil diedit','success');
+        return redirect()->back();
     }
 
     public function destroy($id)

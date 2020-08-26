@@ -1,108 +1,92 @@
-<!doctype html>
-<html class="no-js" lang="en">
-
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Admin desa | Login</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/png" href="{{ asset ('assets/srtdash/assets/images/icon/favicon.ico') }}">
-    <link rel="stylesheet" href="{{ asset ('assets/srtdash/assets/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset ('assets/srtdash/assets/css/font-awesome.min.css') }}">
-    <link rel="stylesheet" href="{{ asset ('assets/srtdash/assets/css/themify-icons.css') }}">
-    <link rel="stylesheet" href="{{ asset ('assets/srtdash/assets/css/metisMenu.css') }}">
-    <link rel="stylesheet" href="{{ asset ('assets/srtdash/assets/css/owl.carousel.min.css') }}">
-    <link rel="stylesheet" href="{{ asset ('assets/srtdash/assets/css/slicknav.min.css') }}">
-    <!-- amchart css -->
-    <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
-    <!-- others css -->
-    <link rel="stylesheet" href="{{ asset ('assets/srtdash/assets/css/typography.css') }}">
-    <link rel="stylesheet" href="{{ asset ('assets/srtdash/assets/css/default-css.css') }}">
-    <link rel="stylesheet" href="{{ asset ('assets/srtdash/assets/css/styles.css') }}">
-    <link rel="stylesheet" href="{{ asset ('assets/srtdash/assets/css/responsive.css') }}">
-    <!-- modernizr css -->
-    <script src="{{ asset ('assets/srtdash/assets/js/vendor/modernizr-2.8.3.min.js') }}"></script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>E-Des | Log in</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{{ asset('adminlte/plugins/fontawesome-free/css/all.min.css') }}">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="{{ asset('adminlte/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{{ asset('adminlte/dist/css/adminlte.min.css') }}">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
+<body class="hold-transition login-page">
+<div class="login-box">
+  <div class="login-logo">
+    <a href="../../index2.html"><b>E-</b>Des</a>
+  </div>
+  <!-- /.login-logo -->
+  <div class="card">
+    <div class="card-body login-card-body">
+      <p class="login-box-msg">Login</p>
 
-<body>
-    <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-    <!-- preloader area start -->
-    <div id="preloader">
-        <div class="loader"></div>
-    </div>
-    <!-- preloader area end -->
-        <!-- sidebar menu area start -->
-        <div class="login-area login-s2">
-            <div class="container">
-                <div class="login-box ptb--100">
-                    <form>
-                        <div class="login-form-head">
-                            <h4>Admindes</h4>
-                            <p>Sistem Informasi Admistrasi Desa</p>
-                        </div>
-                        <div class="login-form-body">
-                            <div class="form-gp">
-                                <label for="exampleInputEmail1">Email address</label>
-                                <input type="email" id="exampleInputEmail1">
-                                <i class="ti-email"></i>
-                                <div class="text-danger"></div>
-                            </div>
-                            <div class="form-gp">
-                                <label for="exampleInputPassword1">Password</label>
-                                <input type="password" id="exampleInputPassword1">
-                                <i class="ti-lock"></i>
-                                <div class="text-danger"></div>
-                            </div>
-                            <div class="row mb-4 rmber-area">
-                            </div>
-                            <div class="submit-btn-area">
-                                <button id="form_submit" type="submit">Login <i class="ti-arrow-right"></i></button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+      <form action="../../index3.html" method="post">
+        <div class="input-group mb-3">
+          <input type="email" class="form-control" placeholder="Email">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-envelope"></span>
             </div>
+          </div>
         </div>
-        <footer>
-            <div class="footer-area">
-                <p>© Copyright 2018. All right reserved. Template by <a href="https://colorlib.com/wp/">Colorlib</a>.</p>
+        <div class="input-group mb-3">
+          <input type="password" class="form-control" placeholder="Password">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
             </div>
-        </footer>
-        <!-- footer area end-->
-    <!-- offset area start -->
-    
-    <!-- offset area end -->
-    <!-- jquery latest version -->
-    <script src="{{ asset('assets/srtdash/assets/js/vendor/jquery-2.2.4.min.js') }}"></script>
-    <!-- bootstrap 4 js -->
-    <script src="{{ asset('assets/srtdash/assets/js/popper.min.js') }}"></script>
-    <script src="{{ asset('assets/srtdash/assets/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('assets/srtdash/assets/js/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('assets/srtdash/assets/js/metisMenu.min.js') }}"></script>
-    <script src="{{ asset('assets/srtdash/assets/js/jquery.slimscroll.min.js') }}"></script>
-    <script src="{{ asset('assets/srtdash/assets/js/jquery.slicknav.min.js') }}"></script>
+          </div>
+        </div>
+        <div class="row">
+        <!--   <div class="col-8">
+            <div class="icheck-primary">
+              <input type="checkbox" id="remember">
+              <label for="remember">
+                Remember Me
+              </label>
+            </div>
+          </div>
+ -->          <!-- /.col -->
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary btn-block">Login</button>
+          </div>
+          <!-- /.col -->
+        </div>
+      </form>
 
-    <!-- start chart js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js') }}"></script>
-    <!-- start highcharts js -->
-    <script src="https://code.highcharts.com/highcharts.js') }}"></script>
-    <!-- start zingchart js -->
-    <script src="https://cdn.zingchart.com/zingchart.min.js') }}"></script>
-    <script>
-    zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
-    ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9", "ee6b7db5b51705a13dc2339db3edaf6d"];
-    </script>
-    <!-- all line chart activation -->
-    <script src="{{ asset('assets/srtdash/assets/js/line-chart.js') }}"></script>
-    <!-- all bar chart activation -->
-    <script src="{{ asset('assets/srtdash/assets/js/bar-chart.js') }}"></script>
-    <!-- all pie chart -->
-    <script src="{{ asset('assets/srtdash/assets/js/pie-chart.js') }}"></script>
-    <!-- others plugins -->
-    <script src="{{ asset('assets/srtdash/assets/js/plugins.js') }}"></script>
-    <script src="{{ asset('assets/srtdash/assets/js/scripts.js') }}"></script>
+      <!-- <div class="social-auth-links text-center mb-3">
+        <p>- OR -</p>
+        <a href="#" class="btn btn-block btn-primary">
+          <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
+        </a>
+        <a href="#" class="btn btn-block btn-danger">
+          <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
+        </a>
+      </div> -->
+      <!-- /.social-auth-links -->
+     <!--  <p class="mb-0">
+        <a href="register.html" class="text-center">Register a new membership</a>
+      </p> -->
+    </div>
+    <!-- /.login-card-body -->
+  </div>
+</div>
+<!-- /.login-box -->
+
+<!-- jQuery -->
+<script src="{{ asset('adminlte/plugins/jquery/jquery.min.js') }}"></script>
+<!-- Bootstrap 4 -->
+<script src="{{ asset('adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<!-- AdminLTE App -->
+<script src="{{ asset('adminlte/dist/js/adminlte.min.js') }}"></script>
+
 </body>
-
 </html>
