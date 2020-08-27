@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Surat')
+@section('title', 'Data Pengguna')
 @section('css')
 <link rel="stylesheet" href="{{ asset('adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
 <link rel="stylesheet" href="{{ asset('adminlte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
@@ -10,12 +10,12 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1>Surat</h1>
+        <h1>Data Pengguna</h1>
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-          <li class="breadcrumb-item active">Surat</li>
+          <li class="breadcrumb-item active">Data Pengguna</li>
         </ol>
       </div>
     </div>
@@ -26,7 +26,7 @@
 <section class="content">
   <div class="card">
     <div class="card-header">
-      <h3 class="card-title">Surat</h3>
+      <h3 class="card-title">Pengguna</h3>
     </div>
     <div class="card-body">
       <button type="button" class="btn btn-icon icon-left btn-primary btn-sm" data-toggle="modal" data-target="#tambah"><i class="far fa-edit"></i> Tambah</button>
@@ -35,18 +35,26 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Tambah Surat</h4>
+              <h4 class="modal-title">Tambah Data Pengguna</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
-              <form role="form" class="needs-validation" method="POST" action="{{ route('surat.store') }}" novalidate>
+              <form role="form" class="needs-validation" method="POST" action="{{ route('pengguna.store') }}" novalidate>
                 @csrf
                 <div class="card-body">
                   <div class="form-group">
-                    <label>Jenis Surat</label>
-                    <input type="text" class="form-control" name="jenis" required placeholder="Jenis Surat">
+                    <label>Nama</label>
+                    <input type="text" class="form-control" name="name" required placeholder="Nama">
+                  </div>
+                  <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" class="form-control" name="email" required placeholder="Email">
+                  </div>
+                  <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" class="form-control" name="password" required placeholder="Password">
                   </div>
                 </div>
                 <div class="card-footer">
@@ -62,20 +70,28 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Edit Surat</h4>
+              <h4 class="modal-title">Edit Data Pengguna</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
-              <form role="form" class="needs-validation" method="POST" action="{{ route('surat.update') }}" novalidate>
+              <form role="form" class="needs-validation" method="POST" action="{{ route('pengguna.update') }}" novalidate>
                 @csrf
                 @method('PUT')
                 <input type="hidden" name="id" id="id">
                 <div class="card-body">
                   <div class="form-group">
-                    <label>Jenis Surat</label>
-                    <input type="text" class="form-control" name="jenis" required id="jenis">
+                    <label>Nama</label>
+                    <input type="text" class="form-control" name="name" required id="name">
+                  </div>
+                  <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" class="form-control" name="email" required id="email">
+                  </div>
+                  <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" class="form-control" name="password" id="password">
                   </div>
                 </div>
                 <div class="card-footer">
@@ -91,14 +107,16 @@
         <thead>
         <tr>
           <th>#</th>
-          <th>Jenis Surat</th>
+          <th>Nama</th>
+          <th>Email</th>
           <th>Aksi</th>
         </tr>
         </thead>
         <tfoot>
         <tr>
           <th>#</th>
-          <th>Jenis Surat</th>
+          <th>Nama</th>
+          <th>Email</th>
           <th>Aksi</th>
         </tr>
         </tfoot>
@@ -118,10 +136,11 @@ $(function() {
     $('#tabel').DataTable({
         processing: true,
         serverSide: true,
-        ajax: '{!! route('surat.data') !!}',
+        ajax: '{!! route('pengguna.data') !!}',
         columns: [
             { data: 'DT_RowIndex', name: 'DT_RowIndex' },
-            { data: 'jenis', name: 'jenis' },
+            { data: 'name', name: 'name' },
+            { data: 'email', name: 'email' },
             { data: 'aksi', name: 'aksi', className: 'text-center' }
         ]
     });
@@ -131,9 +150,11 @@ $(function() {
 $('#edit').on('show.bs.modal', function(event){
     var row = $(event.relatedTarget);
     var id = row.data('id');
-    var jenis = row.data('jenis');
+    var name = row.data('name');
+    var email = row.data('email');
     $('#id').val(id);
-    $('#jenis').val(jenis);
+    $('#name').val(name);
+    $('#email').val(email);
 });
 </script>
 <script>
@@ -150,7 +171,7 @@ $(document).on("click", ".delete", function (e) {
       confirmButtonText: 'Yes'
     }).then((result) => {
       if (result.value) {
-        $.post( "{{ url('surat/destroy')}}/"+id, { "_token": "{{ csrf_token() }}" })
+        $.post( "{{ url('pengguna/destroy')}}/"+id, { "_token": "{{ csrf_token() }}" })
         Swal.fire(
           'Terhapus!',
           'Data berhasil dihapus.',

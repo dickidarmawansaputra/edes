@@ -49,13 +49,13 @@ class PendudukController extends Controller
     	return redirect()->back();
     }
 
-    public function update(Request $request)
-    {
-    	$data = $request->all();
-    	Penduduk::find($request->id)->update($data);
-    	toast('Data tersimpan!','success');
-        return redirect()->route('Penduduk-index');
-    }
+    // public function update(Request $request)
+    // {
+    // 	$data = $request->all();
+    // 	Penduduk::find($request->id)->update($data);
+    // 	toast('Data tersimpan!','success');
+    //     return redirect()->route('Penduduk-index');
+    // }
 
     // public function edit($id)
     // {

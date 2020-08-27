@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Surat')
+@section('title', 'Data Penanggung Jawab')
 @section('css')
 <link rel="stylesheet" href="{{ asset('adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
 <link rel="stylesheet" href="{{ asset('adminlte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
@@ -10,12 +10,12 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1>Surat</h1>
+        <h1>Data Penanggung Jawab</h1>
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-          <li class="breadcrumb-item active">Surat</li>
+          <li class="breadcrumb-item active">Data Penanggung Jawab</li>
         </ol>
       </div>
     </div>
@@ -26,7 +26,7 @@
 <section class="content">
   <div class="card">
     <div class="card-header">
-      <h3 class="card-title">Surat</h3>
+      <h3 class="card-title">Penanggung Jawab</h3>
     </div>
     <div class="card-body">
       <button type="button" class="btn btn-icon icon-left btn-primary btn-sm" data-toggle="modal" data-target="#tambah"><i class="far fa-edit"></i> Tambah</button>
@@ -35,18 +35,26 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Tambah Surat</h4>
+              <h4 class="modal-title">Tambah Data Penanggung Jawab</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
-              <form role="form" class="needs-validation" method="POST" action="{{ route('surat.store') }}" novalidate>
+              <form role="form" class="needs-validation" method="POST" action="{{ route('pj.store') }}" novalidate>
                 @csrf
                 <div class="card-body">
                   <div class="form-group">
-                    <label>Jenis Surat</label>
-                    <input type="text" class="form-control" name="jenis" required placeholder="Jenis Surat">
+                    <label>NIP</label>
+                    <input type="number" class="form-control" name="nip" required placeholder="NIP">
+                  </div>
+                  <div class="form-group">
+                    <label>Nama</label>
+                    <input type="text" class="form-control" name="nama" required placeholder="Nama">
+                  </div>
+                  <div class="form-group">
+                    <label>Jabatan</label>
+                    <input type="text" class="form-control" name="jabatan" required placeholder="Jabatan">
                   </div>
                 </div>
                 <div class="card-footer">
@@ -62,20 +70,28 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Edit Surat</h4>
+              <h4 class="modal-title">Edit Data Penanggung Jawab</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
-              <form role="form" class="needs-validation" method="POST" action="{{ route('surat.update') }}" novalidate>
+              <form role="form" class="needs-validation" method="POST" action="{{ route('pj.update') }}" novalidate>
                 @csrf
                 @method('PUT')
                 <input type="hidden" name="id" id="id">
                 <div class="card-body">
                   <div class="form-group">
-                    <label>Jenis Surat</label>
-                    <input type="text" class="form-control" name="jenis" required id="jenis">
+                    <label>NIP</label>
+                    <input type="number" class="form-control" name="nip" required id="nip">
+                  </div>
+                  <div class="form-group">
+                    <label>Nama</label>
+                    <input type="text" class="form-control" name="nama" required id="nama">
+                  </div>
+                  <div class="form-group">
+                    <label>Jabatan</label>
+                    <input type="text" class="form-control" name="jabatan" required id="jabatan">
                   </div>
                 </div>
                 <div class="card-footer">
@@ -91,14 +107,18 @@
         <thead>
         <tr>
           <th>#</th>
-          <th>Jenis Surat</th>
+          <th>NIP</th>
+          <th>Nama</th>
+          <th>Jabatan</th>
           <th>Aksi</th>
         </tr>
         </thead>
         <tfoot>
         <tr>
           <th>#</th>
-          <th>Jenis Surat</th>
+          <th>NIP</th>
+          <th>Nama</th>
+          <th>Jabatan</th>
           <th>Aksi</th>
         </tr>
         </tfoot>
@@ -118,10 +138,12 @@ $(function() {
     $('#tabel').DataTable({
         processing: true,
         serverSide: true,
-        ajax: '{!! route('surat.data') !!}',
+        ajax: '{!! route('pj.data') !!}',
         columns: [
             { data: 'DT_RowIndex', name: 'DT_RowIndex' },
-            { data: 'jenis', name: 'jenis' },
+            { data: 'nip', name: 'nip' },
+            { data: 'nama', name: 'nama' },
+            { data: 'jabatan', name: 'jabatan' },
             { data: 'aksi', name: 'aksi', className: 'text-center' }
         ]
     });
@@ -131,9 +153,13 @@ $(function() {
 $('#edit').on('show.bs.modal', function(event){
     var row = $(event.relatedTarget);
     var id = row.data('id');
-    var jenis = row.data('jenis');
+    var nip = row.data('nip');
+    var nama = row.data('nama');
+    var jabatan = row.data('jabatan');
     $('#id').val(id);
-    $('#jenis').val(jenis);
+    $('#nip').val(nip);
+    $('#nama').val(nama);
+    $('#jabatan').val(jabatan);
 });
 </script>
 <script>
@@ -150,7 +176,7 @@ $(document).on("click", ".delete", function (e) {
       confirmButtonText: 'Yes'
     }).then((result) => {
       if (result.value) {
-        $.post( "{{ url('surat/destroy')}}/"+id, { "_token": "{{ csrf_token() }}" })
+        $.post( "{{ url('pj/destroy')}}/"+id, { "_token": "{{ csrf_token() }}" })
         Swal.fire(
           'Terhapus!',
           'Data berhasil dihapus.',
