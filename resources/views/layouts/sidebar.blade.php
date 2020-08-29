@@ -42,7 +42,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{ route('surat') }}" class="nav-link">
+              <a href="{{ route('penduduk') }}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Penduduk</p>
               </a>
@@ -73,15 +73,63 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="{{ route('miskin') }}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Keterangan</p>
+                <p>Keterangan Miskin</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="{{ route('belumnikah') }}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Belum Pernah Menikah</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('kematian') }}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Keterangan Kematian</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('kelahiran') }}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Keterangan Kelahiran</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('domisili') }}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Keterangan Domisili</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('usaha') }}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Keterangan Usaha</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('untuknikah') }}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Keterangan Untuk Nikah</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('pengantar') }}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Pengantar</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('persetujuan') }}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Persetujuan Mempelai</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('izinortu') }}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Izin Orang Tua</p>
               </a>
             </li>
           </ul>
@@ -91,6 +139,14 @@
             <i class="nav-icon fas fa-users"></i>
             <p>
               Pengguna
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ route('pengaturan') }}" class="nav-link">
+            <i class="nav-icon fas fa-cogs"></i>
+            <p>
+              Pengaturan
             </p>
           </a>
         </li>

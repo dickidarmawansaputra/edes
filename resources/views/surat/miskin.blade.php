@@ -16,31 +16,37 @@
 	<table>
 		<tr>
 			<td>
-				<img src="{{ public_path() .'/terentang.png' }}" width="100">
+				<img src="{{ public_path() . Storage::url(Helper::pengaturan('logo')->value) }}" width="100">
 			</td>
 			<td>
-				<h2 style="margin-left: -250px; text-align: center;">PEMERINTAH KABUPATEN KUBU RAYA<br>KECAMATAN TERENTANG</h2>
-				<h1 style="margin-left: -250px; margin-top: -10px; text-align: center;">DESA PERMATA</h1>
+				<h2 style="margin-left: -250px; text-align: center;">
+					{{ strtoupper(Helper::pengaturan('kabupaten')->value) }}<br>
+					{{ strtoupper(Helper::pengaturan('kecamatan')->value) }}
+				</h2>
+				<h1 style="margin-left: -250px; margin-top: -10px; text-align: center;">
+					{{ strtoupper(Helper::pengaturan('desa')->value) }}
+				</h1>
 			</td>
 		</tr>
 	</table>
 	<p style="text-align: center; font-weight: bold; margin-top: -10px;">
-		Alamat: Jln. Abdurrahman No.18 Desa Permata Kec Terentang Kode Pos 78392
+		{{ ucfirst(Helper::pengaturan('alamat')->value) }}
 	</p>
 	<hr style="margin-top: -10px; border: 1px solid black;">
 	<h3 style="text-align: center;"><u>SURAT KETERANGAN MISKIN</u></h3>
 	<p style="text-align: center; margin-top: -10px;">Nomor: 400/ 071 /2005/ Kesra/2020</p>
 	<p>Yang bertanda tangan dibawah ini, Kepala Desa Permata, Kecamatan Terentang, Kabupaten Kubu Raya menerangkan bahwa:</p>
+	{{$data}}
 	<table>
 		<tr>
 			<td style="width: 40%;">1. Nama Lengkap</td>
 			<td style="width: 2%;">:</td>
-			<td style="width: 40%;">lorem</td>
+			<td style="width: 40%;">{{ $data->nama }}</td>
 		</tr>
 		<tr>
 			<td style="width: 40%;">2. Jenis Kelamin</td>
 			<td style="width: 2%;">:</td>
-			<td style="width: 40%;">lorem</td>
+			<td style="width: 40%;">{{ $data->jenis_kelamin }}</td>
 		</tr>
 		<tr>
 			<td style="width: 40%;">3. Tempat Tanggal Lahir</td>
@@ -55,27 +61,27 @@
 		<tr>
 			<td style="width: 40%;">5. Status Perkawinan</td>
 			<td style="width: 2%;">:</td>
-			<td style="width: 40%;">lorem</td>
+			<td style="width: 40%;">{{ $data->status_nikah }}</td>
 		</tr>
 		<tr>
 			<td style="width: 40%;">6. Pekerjaan</td>
 			<td style="width: 2%;">:</td>
-			<td style="width: 40%;">lorem</td>
+			<td style="width: 40%;">{{ $data->pekerjaan }}</td>
 		</tr>
 		<tr>
 			<td style="width: 40%;">7. Agama</td>
 			<td style="width: 2%;">:</td>
-			<td style="width: 40%;">lorem</td>
+			<td style="width: 40%;">{{ $data->agama }}</td>
 		</tr>
 		<tr>
 			<td style="width: 40%;">8. NIK</td>
 			<td style="width: 2%;">:</td>
-			<td style="width: 40%;">lorem</td>
+			<td style="width: 40%;">{{ $data->nik }}</td>
 		</tr>
 		<tr>
 			<td style="width: 40%;">9. No KK</td>
 			<td style="width: 2%;">:</td>
-			<td style="width: 40%;">lorem</td>
+			<td style="width: 40%;">{{ $data->no_kk }}</td>
 		</tr>
 		<tr>
 			<td style="width: 40%;">10. No KPS</td>
@@ -99,7 +105,7 @@
 			<td style="width: 25%;"></td>
 			<td style="width: 25%;"></td>
 			<td style="width: 35%;">
-				<p style="margin-left: 50px;">Permata, 23-07-2020</p>
+				<p style="margin-left: 50px;">Permata, {{ Carbon\Carbon::parse($data->created_at)->format('d-m-Y') }}</p>
 				<p style="margin-top: -15px;">An,- &nbsp;&nbsp;&nbsp;&nbsp;Kepala Desa Permata</p>
 				<p style="margin-left: 50px; margin-top: -15px;">Sekertaris Desa</p>
 			</td>
@@ -112,8 +118,8 @@
 			<td style="width: 25%;"></td>
 			<td style="width: 25%;"></td>
 			<td style="width: 35%;">
-				<p style="margin-left: 50px;"><u><b>SUDALHAB</b></u></p>
-				<p style="margin-left: 50px; margin-top: -15px;">Nip: 196910242009061001</p>
+				<p style="margin-left: 50px;"><u><b>{{ strtoupper($data->nama_penjabat) }}</b></u></p>
+				<p style="margin-left: 50px; margin-top: -15px;">Nip: {{ strtoupper($data->nip) }}</p>
 			</td>
 			<td style="width: 15%;"></td>
 		</tr>

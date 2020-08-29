@@ -29,8 +29,9 @@
       <h3 class="card-title">Penduduk</h3>
     </div>
     <div class="card-body">
-      <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-default">Tambah</button>
-      <div class="modal fade" id="modal-default">
+      <button type="button" class="btn btn-icon icon-left btn-primary btn-sm" data-toggle="modal" data-target="#tambah"><i class="far fa-edit"></i> Tambah</button>
+      <br><br>
+      <div class="modal fade" id="tambah">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
@@ -40,134 +41,196 @@
               </button>
             </div>
             <div class="modal-body">
-              <form role="form">
+              <form role="form" class="needs-validation" method="POST" action="{{ route('penduduk.store') }}" novalidate>
+                @csrf
                 <div class="card-body">
                   <div class="row">
                     <div class="col-md-6">
                       <div class="form-group">
                         <label>Nama</label>
-                        <input type="text" name="nama" class="form-control" placeholder="Nama">
+                        <input type="text" class="form-control" name="nama" required placeholder="Nama">
                       </div>
                       <div class="form-group">
                         <label>NIK</label>
-                        <input type="number" name="nik" class="form-control" placeholder="NIK">
+                        <input type="number" class="form-control" name="nik" required placeholder="NIK">
                       </div>
                       <div class="form-group">
-                        <label>Date:</label>
-                          <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                              <input type="text" class="form-control datetimepicker-input" data-target="#reservationdate"/>
-                              <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
-                                  <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                              </div>
-                          </div>
+                        <label>Tempat Lahir</label>
+                        <input type="text" class="form-control" name="tempat_lahir" required placeholder="Tempat Lahir">
+                      </div>
+                      <div class="form-group">
+                        <label>No. HP</label>
+                        <input type="number" class="form-control" name="no_hp" required placeholder="No. HP">
+                      </div>
+                      <div class="form-group">
+                        <label>Agama</label>
+                        <select name="agama" class="form-control" required>
+                          <option selected disabled>Pilih</option>
+                          <option value="Islam">Islam</option>
+                          <option value="Kristen">Kristen</option>
+                          <option value="Katolik">Katolik</option>
+                          <option value="Hindu">Hindu</option>
+                          <option value="Budha">Budha</option>
+                          <option value="Konghucu">Konghucu</option>
+                        </select>
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label>Nama</label>
-                        <input type="text" name="nama" class="form-control" placeholder="Nama">
+                        <label>Jenis Kelamin</label>
+                        <select name="jenis_kelamin" class="form-control" required>
+                          <option selected disabled>Pilih</option>
+                          <option value="Laki-laki">Laki-laki</option>
+                          <option value="Perempuan">Perempuan</option>
+                        </select>
                       </div>
                       <div class="form-group">
-                        <label>Nomor KK</label>
-                        <input type="number" name="no_kk" class="form-control" placeholder="Nomor KK">
+                        <label>No. KK</label>
+                        <input type="number" class="form-control" name="no_kk" required placeholder="No. KK">
+                      </div>
+                      <div class="form-group">
+                        <label>Tanggal Lahir</label>
+                        <input type="date" class="form-control" name="tgl_lahir" required>
+                      </div>
+                      <div class="form-group">
+                        <label>Pekerjaan</label>
+                        <input type="text" class="form-control" name="pekerjaan" required placeholder="Pekerjaan">
+                      </div>
+                      <div class="form-group">
+                        <label>Status Nikah</label>
+                        <select name="status_nikah" class="form-control" required>
+                          <option selected disabled>Pilih</option>
+                          <option value="Belum Kawin">Belum Kawin</option>
+                          <option value="Sudah Kawin">Sudah Kawin</option>
+                        </select>
                       </div>
                     </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputFile">File input</label>
-                    <div class="input-group">
-                      <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="exampleInputFile">
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                      </div>
-                      <div class="input-group-append">
-                        <span class="input-group-text" id="">Upload</span>
+                    <div class="col-12">
+                      <div class="form-group">
+                        <label>Alamat</label>
+                        <textarea name="alamat" class="form-control" placeholder="Alamat" required></textarea>
                       </div>
                     </div>
-                  </div>
-                  <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
                   </div>
                 </div>
-                <!-- /.card-body -->
-
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="submit" class="btn btn-primary btn-block">Simpan</button>
                 </div>
               </form>
             </div>
-            <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
+            
           </div>
-          <!-- /.modal-content -->
         </div>
-        <!-- /.modal-dialog -->
       </div>
-      <!-- /.modal -->
+      <div class="modal fade" id="edit">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Edit Data Penduduk</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form role="form" class="needs-validation" method="POST" action="{{ route('penduduk.update') }}" novalidate>
+                @csrf
+                @method('PUT')
+                <input type="hidden" name="id" id="id">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Nama</label>
+                        <input type="text" class="form-control" name="nama" required id="nama">
+                      </div>
+                      <div class="form-group">
+                        <label>NIK</label>
+                        <input type="number" class="form-control" name="nik" required id="nik">
+                      </div>
+                      <div class="form-group">
+                        <label>Tempat Lahir</label>
+                        <input type="text" class="form-control" name="tempat_lahir" required id="tempat_lahir">
+                      </div>
+                      <div class="form-group">
+                        <label>No. HP</label>
+                        <input type="number" class="form-control" name="no_hp" required id="no_hp">
+                      </div>
+                      <div class="form-group">
+                        <label>Agama</label>
+                        <select name="agama" class="form-control" id="agama" required>
+                          <option selected disabled>Pilih</option>
+                          <option value="Islam">Islam</option>
+                          <option value="Kristen">Kristen</option>
+                          <option value="Katolik">Katolik</option>
+                          <option value="Hindu">Hindu</option>
+                          <option value="Budha">Budha</option>
+                          <option value="Konghucu">Konghucu</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Jenis Kelamin</label>
+                        <select name="jenis_kelamin" class="form-control" id="jenis_kelamin" required>
+                          <option selected disabled>Pilih</option>
+                          <option value="Laki-laki">Laki-laki</option>
+                          <option value="Perempuan">Perempuan</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label>No. KK</label>
+                        <input type="number" class="form-control" name="no_kk" required id="no_kk">
+                      </div>
+                      <div class="form-group">
+                        <label>Tanggal Lahir</label>
+                        <input type="date" class="form-control" name="tgl_lahir" id="tgl_lahir" required>
+                      </div>
+                      <div class="form-group">
+                        <label>Pekerjaan</label>
+                        <input type="text" class="form-control" name="pekerjaan" required id="pekerjaan">
+                      </div>
+                      <div class="form-group">
+                        <label>Status Nikah</label>
+                        <select name="status_nikah" class="form-control" id="status_nikah" required>
+                          <option selected disabled>Pilih</option>
+                          <option value="Belum Kawin">Belum Kawin</option>
+                          <option value="Sudah Kawin">Sudah Kawin</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="form-group">
+                        <label>Alamat</label>
+                        <textarea name="alamat" class="form-control" id="alamat" required></textarea>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary btn-block">Simpan</button>
+                </div>
+              </form>
+            </div>
+            
+          </div>
+        </div>
+      </div>
       <table id="tabel" class="table table-bordered table-striped">
         <thead>
         <tr>
-          <th>Rendering engine</th>
-          <th>Browser</th>
-          <th>Platform(s)</th>
-          <th>Engine version</th>
-          <th>CSS grade</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <td>Trident</td>
-          <td>Internet
-            Explorer 4.0
-          </td>
-          <td>Win 95+</td>
-          <td> 4</td>
-          <td>X</td>
-        </tr>
-        </tbody>
-        <tfoot>
-        <tr>
-          <th>Rendering engine</th>
-          <th>Browser</th>
-          <th>Platform(s)</th>
-          <th>Engine version</th>
-          <th>CSS grade</th>
-        </tr>
-        </tfoot>
-      </table>
-      <table id="example2" class="table table-bordered table-hover">
-        <thead>
-        <tr>
           <th>#</th>
           <th>Nama</th>
           <th>NIK</th>
+          <th>No. KK</th>
           <th>Aksi</th>
         </tr>
         </thead>
-        <tbody>
-        <tr>
-          <td>Other browsers</td>
-          <td>All others</td>
-          <td>-</td>
-          <td>-</td>
-        </tr>
-        </tbody>
         <tfoot>
         <tr>
           <th>#</th>
           <th>Nama</th>
           <th>NIK</th>
+          <th>No. KK</th>
           <th>Aksi</th>
         </tr>
         </tfoot>
@@ -182,20 +245,97 @@
 <script src="{{ asset('adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
 <script src="{{ asset('adminlte/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
 <script src="{{ asset('adminlte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('adminlte/plugins/daterangepicker/daterangepicker.js') }}"></script>
 <script>
 $(function() {
     $('#tabel').DataTable({
         processing: true,
         serverSide: true,
-        ajax: '{!! route('pengguna.data') !!}',
+        ajax: '{!! route('penduduk.data') !!}',
         columns: [
-            { data: 'id', name: 'id' },
+            { data: 'DT_RowIndex', name: 'DT_RowIndex' },
             { data: 'nama', name: 'nama' },
-            { data: 'email', name: 'email' },
+            { data: 'nik', name: 'nik' },
+            { data: 'no_kk', name: 'no_kk' },
             { data: 'aksi', name: 'aksi', className: 'text-center' }
         ]
     });
 });
+</script>
+<script>
+$('#edit').on('show.bs.modal', function(event){
+    var row = $(event.relatedTarget);
+    var id = row.data('id');
+    var nama = row.data('nama');
+    var nik = row.data('nik');
+    var no_kk = row.data('no_kk');
+    var alamat = row.data('alamat');
+    var tempat_lahir = row.data('tempat_lahir');
+    var tgl_lahir = row.data('tgl_lahir');
+    var agama = row.data('agama');
+    var jenis_kelamin = row.data('jenis_kelamin');
+    var status_nikah = row.data('status_nikah');
+    var pekerjaan = row.data('pekerjaan');
+    var no_hp = row.data('no_hp');
+    $('#id').val(id);
+    $('#nama').val(nama);
+    $('#nik').val(nik);
+    $('#no_kk').val(no_kk);
+    $('#alamat').val(alamat);
+    $('#tempat_lahir').val(tempat_lahir);
+    $('#tgl_lahir').val(tgl_lahir);
+    $('#agama').val(agama).change();
+    $('#jenis_kelamin').val(jenis_kelamin).change();
+    $('#status_nikah').val(status_nikah);
+    $('#pekerjaan').val(pekerjaan);
+    $('#no_hp').val(no_hp);
+});
+</script>
+<script>
+$(document).on("click", ".delete", function (e) {
+    var id = $(this).data("id");
+    e.preventDefault();
+    Swal.fire({
+      title: 'Anda yakin?',
+      text: "Data ini akan dihapus!",
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes'
+    }).then((result) => {
+      if (result.value) {
+        $.post( "{{ url('penduduk/destroy')}}/"+id, { "_token": "{{ csrf_token() }}" })
+        Swal.fire(
+          'Terhapus!',
+          'Data berhasil dihapus.',
+          'success'
+        )
+        location.reload();
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Batal hapus',
+          'Data batal dihapus :)',
+          'error'
+        )
+      }
+    })
+});
+</script>
+<script>
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    var forms = document.getElementsByClassName('needs-validation');
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
 </script>
 @endsection

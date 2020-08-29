@@ -20,8 +20,7 @@ class SuratController extends Controller
         return Datatables::of($data)
             ->addColumn('aksi', function($data) {
                 return '
-                <button href="#" class="btn btn-icon btn-primary btn-xs" data-toggle="modal" data-target="#edit" data-id="'.$data->id.'" data-jenis="'.$data->jenis.'"><i class="far fa-edit"></i></button>
-                <button href="#" class="btn btn-icon btn-danger btn-xs delete" data-id="'.$data->id.'"><i class="fas fa-trash"></i></button>';
+                <button href="#" class="btn btn-icon btn-primary btn-xs" data-toggle="modal" data-target="#edit" data-id="'.$data->id.'" data-jenis="'.$data->jenis.'"><i class="far fa-edit"></i></button>';
             })
             ->addIndexColumn()
             ->rawColumns(['aksi'])

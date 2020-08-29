@@ -29,7 +29,7 @@
       <h3 class="card-title">Surat</h3>
     </div>
     <div class="card-body">
-      <button type="button" class="btn btn-icon icon-left btn-primary btn-sm" data-toggle="modal" data-target="#tambah"><i class="far fa-edit"></i> Tambah</button>
+      {{-- <button type="button" class="btn btn-icon icon-left btn-primary btn-sm" data-toggle="modal" data-target="#tambah"><i class="far fa-edit"></i> Tambah</button>
       <br><br>
       <div class="modal fade" id="tambah">
         <div class="modal-dialog">
@@ -86,7 +86,7 @@
             
           </div>
         </div>
-      </div>
+      </div> --}}
       <table id="tabel" class="table table-bordered table-striped">
         <thead>
         <tr>
