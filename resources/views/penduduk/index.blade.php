@@ -250,6 +250,8 @@ $(function() {
     $('#tabel').DataTable({
         processing: true,
         serverSide: true,
+        responsive: true,
+        autoWidth: true,
         ajax: '{!! route('penduduk.data') !!}',
         columns: [
             { data: 'DT_RowIndex', name: 'DT_RowIndex' },

@@ -56,7 +56,7 @@
           </ul>
         </li>
         <li class="nav-item">
-          <a href="{{ route('pengguna') }}" class="nav-link">
+          <a href="{{ route('datasurat') }}" class="nav-link">
             <i class="nav-icon fas fa-file-signature"></i>
             <p>
               Surat
@@ -82,6 +82,12 @@
               <a href="{{ route('belumnikah') }}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Belum Pernah Menikah</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('izinkeramaian') }}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Izin Keramaian</p>
               </a>
             </li>
             <li class="nav-item">

@@ -32,6 +32,14 @@ Route::middleware('auth')->group(function () {
 	Route::put('surat/update', 'SuratController@update')->name('surat.update');
 	Route::post('surat/destroy/{id}', 'SuratController@destroy')->name('surat.destroy');
 
+	Route::get('datasurat', 'DataSuratController@index')->name('datasurat');
+	Route::get('datasurat/data', 'DataSuratController@data')->name('datasurat.data');
+	Route::get('datasurat/detail/{id}', 'DataSuratController@dataDetail')->name('datasurat.datadetail');
+	Route::post('datasurat/store', 'DataSuratController@store')->name('datasurat.store');
+	Route::post('datasurat/update', 'DataSuratController@update')->name('datasurat.update');
+	Route::post('datasurat/destroy/{id}', 'DataSuratController@destroy')->name('datasurat.destroy');
+	Route::get('datasurat/export/{id}', 'DataSuratController@export')->name('datasurat.export');
+
 	Route::get('penduduk', 'PendudukController@index')->name('penduduk');
 	Route::get('penduduk/data', 'PendudukController@data')->name('penduduk.data');
 	Route::post('penduduk/store', 'PendudukController@store')->name('penduduk.store');
@@ -51,6 +59,10 @@ Route::middleware('auth')->group(function () {
 	Route::get('laporan/belumnikah', 'LaporanController@ketBelumMenikah')->name('belumnikah');
 	Route::get('laporan/data/belumnikah', 'LaporanController@dataBelumMenikah')->name('belumnikah.data');
 	Route::get('laporan/pdf/belumnikah/{id}', 'LaporanController@pdfBelumMenikah')->name('belumnikah.pdf');
+
+	Route::get('laporan/izinkeramaian', 'LaporanController@izinKeramaian')->name('izinkeramaian');
+	Route::get('laporan/data/izinkeramaian', 'LaporanController@dataIzinKeramaian')->name('izinkeramaian.data');
+	Route::get('laporan/pdf/izinkeramaian/{id}', 'LaporanController@pdfIzinKeramaian')->name('izinkeramaian.pdf');
 
 	Route::get('laporan/kematian', 'LaporanController@ketKematian')->name('kematian');
 	Route::get('laporan/data/kematian', 'LaporanController@dataKematian')->name('kematian.data');
@@ -87,21 +99,3 @@ Route::middleware('auth')->group(function () {
 	Route::get('pengaturan', 'PengaturanController@index')->name('pengaturan');
 	Route::post('pengaturan/store', 'PengaturanController@pengaturan')->name('pengaturan.store');
 });
-// Route::get('/data-warga', 'WargaController@data')->name('data-warga');
-// Route::get('/warga', 'WargaController@index')->name('warga-index');
-// Route::post('/warga', 'WargaController@store')->name('warga-store');
-// Route::get('/warga/{id}', 'WargaController@edit')->name('warga-edit');
-// Route::put('/warga', 'WargaController@update')->name('warga-update');
-// Route::post('warga/hapus/{id}', 'WargaController@destroy')->name('warga.destroy');
-
-// Route::get('datasurat', 'DataSuratController@index')->name('datasurat');
-// Route::get('datasurat/data', 'DataSuratController@data')->name('datasurat.data');
-// Route::post('datasurat/store', 'DataSuratController@store')->name('datasurat.store');
-// Route::post('datasurat/update', 'DataSuratController@update')->name('datasurat.update');
-// Route::post('datasurat/destroy', 'DataSuratController@destroy')->name('datasurat.destroy');
-// Route::get('/data-penduduk', 'PendudukController@data')->name('penduduk-data');
-// Route::get('/penduduk', 'PendudukController@index')->name('penduduk-index');
-// Route::post('/penduduk', 'PendudukController@store')->name('penduduk-store');
-// Route::get('/penduduk/{id}', 'PendudukController@edit')->name('penduduk-edit');
-// Route::put('/penduduk', 'PendudukController@update')->name('penduduk-update');
-// Route::post('penduduk/hapus/{id}', 'pendudukController@destroy')->name('penduduk-destroy');

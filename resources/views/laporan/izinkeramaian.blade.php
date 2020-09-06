@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Surat Keterangan Belum Pernah Menikah')
+@section('title', 'Surat Izin Keramaian')
 @section('css')
 <link rel="stylesheet" href="{{ asset('adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
 <link rel="stylesheet" href="{{ asset('adminlte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
@@ -10,12 +10,12 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1>Surat Keterangan Belum Pernah Menikah</h1>
+        <h1>Surat Izin Keramaian</h1>
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-          <li class="breadcrumb-item active">Surat Keterangan Belum Pernah Menikah</li>
+          <li class="breadcrumb-item active">Surat Izin Keramaian</li>
         </ol>
       </div>
     </div>
@@ -26,7 +26,7 @@
 <section class="content">
   <div class="card">
     <div class="card-header">
-      <h3 class="card-title">Surat Keterangan Belum Pernah Menikah</h3>
+      <h3 class="card-title">Surat Izin Keramaian</h3>
     </div>
     <div class="card-body">
       <div class="table-responsive">
@@ -68,7 +68,7 @@ $(function() {
     $('#tabel').DataTable({
         processing: true,
         serverSide: true,
-        ajax: '{!! route('belumnikah.data') !!}',
+        ajax: '{!! route('izinkeramaian.data') !!}',
         columns: [
             { data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false },
             { data: 'nomor_surat', name: 'nomor_surat' },

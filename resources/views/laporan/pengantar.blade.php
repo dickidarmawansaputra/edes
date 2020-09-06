@@ -29,26 +29,30 @@
       <h3 class="card-title">Surat Pengantar</h3>
     </div>
     <div class="card-body">
-      <table id="tabel" class="table table-bordered table-striped">
-        <thead>
-        <tr>
-          <th>#</th>
-          <th>NIK</th>
-          <th>Nama</th>
-          <th>No. KK</th>
-          <th>Aksi</th>
-        </tr>
-        </thead>
-        <tfoot>
-        <tr>
-          <th>#</th>
-          <th>NIK</th>
-          <th>Nama</th>
-          <th>No. KK</th>
-          <th>Aksi</th>
-        </tr>
-        </tfoot>
-      </table>
+      <div class="table-responsive">
+        <table id="tabel" class="table table-bordered table-striped">
+          <thead>
+          <tr>
+            <th>#</th>
+            <th>No. Surat</th>
+            <th>Nama</th>
+            <th>NIK</th>
+            <th>No. KK</th>
+            <th>Aksi</th>
+          </tr>
+          </thead>
+          <tfoot>
+          <tr>
+            <th>#</th>
+            <th>No. Surat</th>
+            <th>Nama</th>
+            <th>NIK</th>
+            <th>No. KK</th>
+            <th>Aksi</th>
+          </tr>
+          </tfoot>
+        </table>
+      </div>
     </div>
     <div class="card-footer"></div>
   </div>
@@ -67,6 +71,7 @@ $(function() {
         ajax: '{!! route('pengantar.data') !!}',
         columns: [
             { data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false },
+            { data: 'nomor_surat', name: 'nomor_surat' },
             { data: 'nama', name: 'nama' },
             { data: 'nik', name: 'nik' },
             { data: 'no_kk', name: 'no_kk' },

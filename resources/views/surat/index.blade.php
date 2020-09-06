@@ -57,7 +57,7 @@
             
           </div>
         </div>
-      </div>
+      </div> --}}
       <div class="modal fade" id="edit">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -86,7 +86,7 @@
             
           </div>
         </div>
-      </div> --}}
+      </div>
       <table id="tabel" class="table table-bordered table-striped">
         <thead>
         <tr>
@@ -136,7 +136,7 @@ $('#edit').on('show.bs.modal', function(event){
     $('#jenis').val(jenis);
 });
 </script>
-<script>
+{{-- <script>
 $(document).on("click", ".delete", function (e) {
     var id = $(this).data("id");
     e.preventDefault();
@@ -166,7 +166,7 @@ $(document).on("click", ".delete", function (e) {
       }
     })
 });
-</script>
+</script> --}}
 <script>
 (function() {
   'use strict';

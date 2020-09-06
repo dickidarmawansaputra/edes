@@ -30,20 +30,20 @@
           <div class="icon">
             <i class="fas fa-file-signature"></i>
           </div>
-          <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          <a href="#" class="small-box-footer"><i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
       <div class="col-lg-3 col-6">
         <div class="small-box bg-success">
           <div class="inner">
-            <h3>53<sup style="font-size: 20px">%</sup></h3>
+            <h3>{{ $jenis }}</h3>
 
-            <p>Laporan</p>
+            <p>Jenis Surat</p>
           </div>
           <div class="icon">
-            <i class="ion ion-stats-bars"></i>
+            <i class="fas fa-file-signature"></i>
           </div>
-          <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          <a href="#" class="small-box-footer"><i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
       <div class="col-lg-3 col-6">
@@ -56,7 +56,7 @@
           <div class="icon">
             <i class="ion ion-person-add"></i>
           </div>
-          <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          <a href="#" class="small-box-footer"><i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
       <div class="col-lg-3 col-6">
@@ -69,7 +69,7 @@
           <div class="icon">
             <i class="fas fa-users"></i>
           </div>
-          <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          <a href="#" class="small-box-footer"><i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
     </div>

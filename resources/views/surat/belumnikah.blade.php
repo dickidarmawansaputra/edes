@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Surat Keterangan Usaha</title>
+	<title>Surat Keterangan Belum Pernah Menikah</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<style>
 	.page-break {
@@ -10,6 +10,7 @@
 	table {
 		width: 100%;
 	}
+	
 	.format {
 		font-size: 12pt;
 		line-height: 1;
@@ -39,68 +40,88 @@
 		</p>
 		<hr style="margin-top: -10px; border: 1px solid black;">
 		<h3 style="text-align: center;"><u>{{ strtoupper($data->jenis_surat) }}</u></h3>
-		<p style="text-align: center; margin-top: -10px;">Nomor: 100/{{ $data->nomor_surat }}/2005/Pem/{{ date('Y') }}</p>
+		<p style="text-align: center; margin-top: -10px;">Nomor: 400/{{ $data->nomor_surat }}/2005/Pem/{{ date('Y') }}</p>
 		<p>Yang bertanda tangan dibawah ini, Kepala Desa Permata, Kecamatan Terentang, Kabupaten Kubu Raya menerangkan bahwa:</p>
-		<table cellspacing="0" cellpadding="0">
+		<table cellpadding="0" cellspacing="0">
 			<tr>
-				<td style="width: 34%;">1. Nama Lengkap</td>
+				<td style="width: 39%;">1. Nama Lengkap</td>
 				<td style="width: 1%;">:</td>
-				<td style="width: 65%;"><b>{{ strtoupper($data->nama) }}</b></td>
+				<td style="width: 60%;">{{ strtoupper($data->nama) }}</td>
 			</tr>
 			<tr>
-				<td style="width: 34%;">2. Jenis Kelamin</td>
+				<td style="width: 39%;">2. Jenis Kelamin</td>
 				<td style="width: 1%;">:</td>
-				<td style="width: 65%;">{{ $data->jenis_kelamin }}</td>
+				<td style="width: 60%;">{{ $data->jenis_kelamin }}</td>
 			</tr>
 			<tr>
-				<td style="width: 34%;">3. Tempat Tanggal Lahir</td>
+				<td style="width: 39%;">3. Tempat Tanggal Lahir</td>
 				<td style="width: 1%;">:</td>
-				<td style="width: 65%;">{{ $data->tempat_lahir }}, {{ $data->tgl_lahir }}</td>
+				<td style="width: 60%;">{{ ucfirst($data->tempat_lahir) }}, {{ Carbon\Carbon::parse($data->tgl_lahir)->translatedFormat('d F Y') }}</td>
 			</tr>
 			<tr>
-				<td style="width: 34%;">4. Status Perkawinan</td>
+				<td style="width: 39%;">4. Kewarganegaraan</td>
 				<td style="width: 1%;">:</td>
-				<td style="width: 65%;">{{ ucwords($data->status_nikah) }}</td>
+				<td style="width: 60%;">{{ $data->warga_negara }}</td>
 			</tr>
 			<tr>
-				<td style="width: 34%;">5. Pekerjaan</td>
+				<td style="width: 39%;">5. Status Perkawinan</td>
 				<td style="width: 1%;">:</td>
-				<td style="width: 65%;">{{ ucwords($data->pekerjaan) }}</td>
+				<td style="width: 60%;">{{ $data->status_nikah }}</td>
 			</tr>
 			<tr>
-				<td style="width: 34%;">6. Agama</td>
+				<td style="width: 39%;">6. Pekerjaan</td>
 				<td style="width: 1%;">:</td>
-				<td style="width: 65%;">{{ $data->agama }}</td>
+				<td style="width: 60%;">{{ $data->pekerjaan }}</td>
 			</tr>
 			<tr>
-				<td style="width: 34%;">7. NIK</td>
+				<td style="width: 39%;">7. Agama</td>
 				<td style="width: 1%;">:</td>
-				<td style="width: 65%;">{{ $data->nik }}</td>
+				<td style="width: 60%;">{{ strtoupper($data->agama) }}</td>
 			</tr>
 			<tr>
-				<td style="width: 34%;">8. No. KK</td>
+				<td style="width: 39%;">8. NIK</td>
 				<td style="width: 1%;">:</td>
-				<td style="width: 65%;">{{ $data->no_kk }}</td>
+				<td style="width: 60%;">{{ $data->nik }}</td>
 			</tr>
 			<tr>
-				<td style="width: 34%;">9. Alamat</td>
+				<td style="width: 39%;">9. No KK</td>
 				<td style="width: 1%;">:</td>
-				<td style="width: 65%;">{{ ucfirst($data->alamat) }}</td>
+				<td style="width: 60%;">{{ $data->no_kk }}</td>
 			</tr>
 			<tr>
-				<td style="width: 34%;">Keterangan</td>
+				<td style="width: 39%;">10. No KPS</td>
 				<td style="width: 1%;">:</td>
-				<td style="width: 65%;"></td>
+				<td style="width: 60%;">{{ $data->nomor_kps }}</td>
 			</tr>
 			<tr>
-				<td style="width: 34%;"></td>
+				<td style="width: 39%;">11. Alamat</td>
+				<td style="width: 1%;">:</td>
+				<td style="width: 60%;">{{ ucfirst($data->alamat) }}</td>
+			</tr>
+			<tr>
+				<td style="width: 39%;">12. Keterangan</td>
+				<td style="width: 1%;">:</td>
+				<td style="width: 60%;"></td>
+			</tr>
+			<tr>
+				<td style="width: 39%;"></td>
 				<td style="width: 1%;" valign="top">-</td>
-				<td style="width: 65%;">Bahwa nama tersebut benar Penduduk di Desa Permata, Kecamatan Terentang, Kabupaten Kubu Raya.</td>
+				<td style="width: 60%;">Bahwa nama tersebut benar penduduk di Desa Permata, Kecamatan Terentang, Kabupaten Kubu Raya.</td>
 			</tr>
 			<tr>
-				<td style="width: 34%;"></td>
+				<td style="width: 39%;"></td>
 				<td style="width: 1%;" valign="top">-</td>
-				<td style="width: 65%;">{{ ucfirst($data->keterangan) }}</td>
+				<td style="width: 60%;">Bahwa yang namanya tersebut berkelakuan baik dan selama berdomisili di wilayah Desa Permata tidak pernah berurusan dengan pihak yang berwajib / Pihak Kepolisian.</td>
+			</tr>
+			<tr>
+				<td style="width: 39%;"></td>
+				<td style="width: 1%;" valign="top">-</td>
+				<td style="width: 60%;">Yang bersangkutan benar belum pernah menikah.</td>
+			</tr>
+			<tr>
+				<td style="width: 39%;"></td>
+				<td style="width: 1%;" valign="top">-</td>
+				<td style="width: 60%;">{{ ucfirst($data->keterangan) }}</td>
 			</tr>
 		</table>
 		<p>Demikian surat keterangan ini dibuat untuk dapat dipergunakan sebagaimana mestinya.</p>
@@ -117,7 +138,7 @@
 			</tr>
 		</table>
 		<br><br>
-		<table border="0"cellspacing="0" cellpadding="0">
+		<table cellspacing="0" cellpadding="0">
 			<tr>
 				<td style="width: 25%;"></td>
 				<td style="width: 25%;"></td>
@@ -128,6 +149,7 @@
 				<td style="width: 15%;"></td>
 			</tr>
 		</table>
+		
 	</div>
 </body>
 </html>
