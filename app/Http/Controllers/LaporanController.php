@@ -394,4 +394,37 @@ class LaporanController extends Controller
         $pdf = PDF::loadView('surat.izinortu', compact('data'))->setPaper('a4', 'portrait')->setWarnings(false);
         return $pdf->stream('Surat Izin Orang Tua.pdf');
     }
+
+    public function skck()
+    {
+        return view('laporan.skck');
+    }
+
+    public function dataSkck()
+    {
+        $data = DataSurat::where('jenis_surat_id', 12)
+                ->join('penduduk', 'data_surat.penduduk_id', 'penduduk.id')
+                ->orderBy('nomor_surat', 'DESC')
+                ->select('data_surat.id', 'data_surat.nomor_surat', 'penduduk.nik', 'penduduk.nama', 'penduduk.no_kk');
+        return Datatables::of($data)
+            ->addColumn('aksi', function($data) {
+                return '
+                <a href="'.route('skck.pdf', $data->id).'" target="_blank" class="btn btn-icon btn-danger btn-xs"><i class="fas fa-file-pdf"></i></a>';
+            })
+            ->addIndexColumn()
+            ->rawColumns(['aksi'])
+            ->make(true);
+    }
+
+    public function pdfSkck($id)
+    {
+        $data = DataSurat::leftJoin('penduduk', 'data_surat.penduduk_id', 'penduduk.id')
+                ->leftJoin('penanggung_jawab', 'data_surat.penanggung_jawab_id', 'penanggung_jawab.id')
+                ->leftJoin('surat', 'data_surat.jenis_surat_id', 'surat.id')
+                ->where('data_surat.id', $id)
+                ->select('data_surat.id', 'data_surat.nomor_surat', 'data_surat.created_at', 'penduduk.nik', 'penduduk.no_kk', 'penduduk.nama', 'penduduk.alamat', 'penduduk.tempat_lahir', 'penduduk.tgl_lahir', 'penduduk.agama', 'penduduk.jenis_kelamin', 'penduduk.pekerjaan', 'penduduk.warga_negara', 'penanggung_jawab.nip', 'penanggung_jawab.nama as nama_penjabat', 'penanggung_jawab.jabatan', 'surat.jenis as jenis_surat')
+                ->first();
+        $pdf = PDF::loadView('surat.skck', compact('data'))->setPaper('a4', 'portrait')->setWarnings(false);
+        return $pdf->stream('Surat Keterangan Catatan Kepolisian.pdf');
+    }
 }

@@ -96,6 +96,10 @@ Route::middleware('auth')->group(function () {
 	Route::get('laporan/data/izinortu', 'LaporanController@dataIzinOrtu')->name('izinortu.data');
 	Route::get('laporan/pdf/izinortu/{id}', 'LaporanController@pdfIzinOrtu')->name('izinortu.pdf');
 
+	Route::get('laporan/skck', 'LaporanController@skck')->name('skck');
+	Route::get('laporan/data/skck', 'LaporanController@dataSkck')->name('skck.data');
+	Route::get('laporan/pdf/skck/{id}', 'LaporanController@pdfSkck')->name('skck.pdf');
+
 	Route::get('pengaturan', 'PengaturanController@index')->name('pengaturan');
 	Route::post('pengaturan/store', 'PengaturanController@pengaturan')->name('pengaturan.store');
 });

@@ -138,6 +138,12 @@
                 <p>Izin Orang Tua</p>
               </a>
             </li>
+            <li class="nav-item">
+              <a href="{{ route('skck') }}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>SKCK</p>
+              </a>
+            </li>
           </ul>
         </li>
         <li class="nav-item">
