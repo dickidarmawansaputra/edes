@@ -103,26 +103,28 @@
           </div>
         </div>
       </div>
-      <table id="tabel" class="table table-bordered table-striped">
-        <thead>
-        <tr>
-          <th>#</th>
-          <th>NIP</th>
-          <th>Nama</th>
-          <th>Jabatan</th>
-          <th>Aksi</th>
-        </tr>
-        </thead>
-        <tfoot>
-        <tr>
-          <th>#</th>
-          <th>NIP</th>
-          <th>Nama</th>
-          <th>Jabatan</th>
-          <th>Aksi</th>
-        </tr>
-        </tfoot>
-      </table>
+      <div class="table-responsive">
+        <table id="tabel" class="table table-bordered table-striped">
+          <thead>
+          <tr>
+            <th>#</th>
+            <th>NIP</th>
+            <th>Nama</th>
+            <th>Jabatan</th>
+            <th>Aksi</th>
+          </tr>
+          </thead>
+          <tfoot>
+          <tr>
+            <th>#</th>
+            <th>NIP</th>
+            <th>Nama</th>
+            <th>Jabatan</th>
+            <th>Aksi</th>
+          </tr>
+          </tfoot>
+        </table>
+      </div>
     </div>
     <div class="card-footer"></div>
   </div>
@@ -210,4 +212,35 @@ $(document).on("click", ".delete", function (e) {
   }, false);
 })();
 </script>
+@if(Session::get('store'))
+<script>
+  $(function() {
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000
+    });
+    Toast.fire({
+      icon: 'success',
+      title: 'Data berhasil ditambahkan.'
+    });
+  });
+</script>
+@elseif(Session::get('update'))
+<script>
+  $(function() {
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000
+    });
+    Toast.fire({
+      icon: 'success',
+      title: 'Data berhasil diedit.'
+    });
+  });
+</script>
+@endif
 @endsection

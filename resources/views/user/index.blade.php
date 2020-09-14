@@ -3,7 +3,7 @@
 @section('css')
 <link rel="stylesheet" href="{{ asset('adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
 <link rel="stylesheet" href="{{ asset('adminlte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
-<link rel="stylesheet" href="{{ asset('adminlte/plugins/daterangepicker/daterangepicker.css') }}">
+<link rel="stylesheet" href="{{ asset('dropify/dist/css/dropify.min.css') }}">
 @endsection
 @section('breadcrumb')
 <section class="content-header">
@@ -41,7 +41,7 @@
               </button>
             </div>
             <div class="modal-body">
-              <form role="form" class="needs-validation" method="POST" action="{{ route('pengguna.store') }}" novalidate>
+              <form role="form" class="needs-validation" method="POST" action="{{ route('pengguna.store') }}" novalidate enctype="multipart/form-data">
                 @csrf
                 <div class="card-body">
                   <div class="form-group">
@@ -55,6 +55,10 @@
                   <div class="form-group">
                     <label>Password</label>
                     <input type="password" class="form-control" name="password" required placeholder="Password">
+                  </div>
+                  <div class="form-group">
+                    <label>Foto</label>
+                    <input type="file" class="dropify" name="photo">
                   </div>
                 </div>
                 <div class="card-footer">
@@ -76,7 +80,7 @@
               </button>
             </div>
             <div class="modal-body">
-              <form role="form" class="needs-validation" method="POST" action="{{ route('pengguna.update') }}" novalidate>
+              <form role="form" class="needs-validation" method="POST" action="{{ route('pengguna.update') }}" novalidate enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <input type="hidden" name="id" id="id">
@@ -92,6 +96,10 @@
                   <div class="form-group">
                     <label>Password</label>
                     <input type="password" class="form-control" name="password" id="password">
+                  </div>
+                  <div class="form-group">
+                    <label>Foto</label>
+                    <input type="file" class="dropify" name="photo" id="photo">
                   </div>
                 </div>
                 <div class="card-footer">
@@ -131,6 +139,10 @@
 <script src="{{ asset('adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
 <script src="{{ asset('adminlte/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
 <script src="{{ asset('adminlte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('dropify/dist/js/dropify.min.js') }}"></script>
+<script>
+  $('.dropify').dropify();
+</script>
 <script>
 $(function() {
     $('#tabel').DataTable({
@@ -152,9 +164,23 @@ $('#edit').on('show.bs.modal', function(event){
     var id = row.data('id');
     var name = row.data('name');
     var email = row.data('email');
+    var photo = row.data('photo');
+    var photo_file = row.data('photo_file');
     $('#id').val(id);
     $('#name').val(name);
     $('#email').val(email);
+    $('#photo').text(photo);
+    var imagenUrl = photo_file;
+    var drEvent = $('#photo').dropify(
+    {
+      defaultFile: imagenUrl
+    });
+    drEvent = drEvent.data('dropify');
+    drEvent.resetPreview();
+    drEvent.clearElement();
+    drEvent.settings.defaultFile = imagenUrl;
+    drEvent.destroy();
+    drEvent.init();
 });
 </script>
 <script>
@@ -205,4 +231,35 @@ $(document).on("click", ".delete", function (e) {
   }, false);
 })();
 </script>
+@if(Session::get('store'))
+<script>
+  $(function() {
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000
+    });
+    Toast.fire({
+      icon: 'success',
+      title: 'Data berhasil ditambahkan.'
+    });
+  });
+</script>
+@elseif(Session::get('update'))
+<script>
+  $(function() {
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000
+    });
+    Toast.fire({
+      icon: 'success',
+      title: 'Data berhasil diedit.'
+    });
+  });
+</script>
+@endif
 @endsection

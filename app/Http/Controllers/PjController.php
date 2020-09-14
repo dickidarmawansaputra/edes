@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\PenanggungJawab;
 use DataTables;
 use Illuminate\Http\Request;
+use Alert;
 
 class PjController extends Controller
 {
@@ -33,6 +34,7 @@ class PjController extends Controller
     {
         $data = $request->all();
         PenanggungJawab::create($data);
+        session()->flash('store');
         return redirect()->back();
     }
 
@@ -40,6 +42,7 @@ class PjController extends Controller
     {
         $data = $request->all();
         PenanggungJawab::find($request->id)->update($data);
+        session()->flash('update');
         return redirect()->back();
     }
 

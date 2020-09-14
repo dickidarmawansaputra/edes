@@ -36,6 +36,13 @@ Route::middleware('auth')->group(function () {
 	Route::get('datasurat/data', 'DataSuratController@data')->name('datasurat.data');
 	Route::get('datasurat/detail/{id}', 'DataSuratController@dataDetail')->name('datasurat.datadetail');
 	Route::post('datasurat/store', 'DataSuratController@store')->name('datasurat.store');
+	Route::post('datasurat-kelahiran/store', 'DataSuratController@storeKelahiran')->name('datasurat.storeKelahiran');
+	Route::post('datasurat-kematian/store', 'DataSuratController@storeKematian')->name('datasurat.storeKematian');
+	Route::post('datasurat-izinortu/store', 'DataSuratController@storeIzinortu')->name('datasurat.storeIzinortu');
+	Route::post('datasurat-persetujuan/store', 'DataSuratController@storePersetujuan')->name('datasurat.storePersetujuan');
+	Route::post('datasurat-nikah/store', 'DataSuratController@storeNikah')->name('datasurat.storeNikah');
+	Route::post('datasurat-pengantar/store', 'DataSuratController@storePengantar')->name('datasurat.storePengantar');
+	Route::post('datasurat-blmnikah/store', 'DataSuratController@storeBlmnikah')->name('datasurat.storeBelumnikah');
 	Route::post('datasurat/update', 'DataSuratController@update')->name('datasurat.update');
 	Route::post('datasurat/destroy/{id}', 'DataSuratController@destroy')->name('datasurat.destroy');
 	Route::get('datasurat/export/{id}', 'DataSuratController@export')->name('datasurat.export');
@@ -47,6 +54,7 @@ Route::middleware('auth')->group(function () {
 	Route::post('penduduk/destroy/{id}', 'PendudukController@destroy')->name('penduduk.destroy');
 
 	Route::get('pengguna', 'UserController@index')->name('pengguna');
+	Route::get('pengguna/profil', 'UserController@profile')->name('pengguna.profile');
 	Route::get('pengguna/data', 'UserController@data')->name('pengguna.data');
 	Route::post('pengguna/store', 'UserController@store')->name('pengguna.store');
 	Route::put('pengguna/update', 'UserController@update')->name('pengguna.update');
